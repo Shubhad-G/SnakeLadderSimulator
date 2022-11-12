@@ -11,6 +11,8 @@ namespace SnakeLadderSimulator
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake Ladder Single Player Game");
+            int playerPosition = 0;
+            Console.WriteLine("initialized the player position to {0}", playerPosition);
             Console.ReadLine();
         }
     }
