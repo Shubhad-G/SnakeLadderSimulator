@@ -46,14 +46,14 @@ namespace SnakeLadderSimulator
                                 {
                                     player1Position = player1Position - diceRoll;
                                     Console.WriteLine("\nNoplay\nplayer 1 position : {0}", player1Position);
-                                    currentPlayer= "player2";
+                                    currentPlayer= "player2";//dice is given to player 2
                                 }
                                 else
                                     Console.WriteLine("Ladder\nplayer 1 has won: {0}", player1Position);
                             }
                             else
                                 Console.WriteLine("No play\nplayer 1 position: {0}", player1Position);
-                                currentPlayer = "player2";
+                                currentPlayer = "player2";//dice is given to player 2
                         }
                         else
                         {
@@ -63,14 +63,14 @@ namespace SnakeLadderSimulator
                                 {
                                     player2Position = player2Position - diceRoll;
                                     Console.WriteLine("\nNoplay\nplayer 2 position : {0}", player2Position);
-                                    currentPlayer="player1";
+                                    currentPlayer="player1";//dice is given to player 1
                                 }
                                 else
                                     Console.WriteLine("Ladder\nplayer 2 has won: {0}", player2Position);
                             }
                             else
                                 Console.WriteLine("No play\nplayer 2 position: {0}", player2Position);
-                                currentPlayer="player1";
+                                currentPlayer="player1";//dice is given to player 1
                         }
                         break;
 
@@ -94,7 +94,7 @@ namespace SnakeLadderSimulator
                             }
                             else
                                 Console.WriteLine("\nLadder\nplayer 1 position: {0}", player1Position);
-                                currentPlayer = "player1";
+                                currentPlayer = "player1";//dice is given to player 1 again as the option is ladder
                         }
                         else
                         {
@@ -115,7 +115,7 @@ namespace SnakeLadderSimulator
                             }
                             else
                                 Console.WriteLine("\nLadder\nplayer 2 position: {0}", player2Position);
-                                currentPlayer="player2";
+                                currentPlayer="player2";//dice is given to player 2 again as the option is ladder
                         }
                         break;
 
@@ -126,7 +126,7 @@ namespace SnakeLadderSimulator
                             if (player1Position < 0)
                                 player1Position = 0;
                             Console.WriteLine("Snake\nplayer 1 position : {0}", player1Position);
-                            currentPlayer = "player2";
+                            currentPlayer = "player2";//dice is given to player 2
                         }
                         else
                         {
@@ -134,7 +134,7 @@ namespace SnakeLadderSimulator
                             if (player2Position < 0)
                                 player2Position = 0;
                             Console.WriteLine("Snake\nplayer 2 position : {0}", player2Position);
-                            currentPlayer = "player1";
+                            currentPlayer = "player1";//dice is given to player 1
                         }
                         break;
                 }      
