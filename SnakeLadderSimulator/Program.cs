@@ -137,8 +137,7 @@ namespace SnakeLadderSimulator
                             currentPlayer = "player1";
                         }
                         break;
-                }
-                       
+                }      
                 }
             Console.WriteLine("Number of times dice thrown by player1 :{0}", diceCount1);
             Console.WriteLine("Number of times dice thrown by player2 :{0}", diceCount2);
