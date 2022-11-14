@@ -11,14 +11,17 @@ namespace SnakeLadderSimulator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Snake Ladder Single Player Game");
+            Console.WriteLine("Welcome to Snake Ladder 2 Player Game");
             Random random = new Random();
-            int playerPosition = 0;
+            
+            int player1Position = 0;
+            int player2Position = 0;
+            string currentPlayer = "player1";//initialized current player to player 1 in the beginning
+            Console.WriteLine("initialized the player1 position to {0}", player1Position);
+            Console.WriteLine("initialized the player2 position to {0}", player2Position);
+            Console.WriteLine("Rolling the dice for");
 
-            Console.WriteLine("initialized the player position to {0}", playerPosition);
-            Console.WriteLine("Rolling the dice");
-
-            while (playerPosition <= 100)
+            while (player1Position <= 100 && player2Position<=100)
             {
                
                 int diceRoll = random.Next(1, 7);
@@ -27,50 +30,109 @@ namespace SnakeLadderSimulator
                 switch (option)
                 {
                     case 1:
-                        if (playerPosition >= 100)
+                        if (currentPlayer == "player1")
                         {
-                            if (playerPosition > 100)
+                            if (player1Position >= 100)
                             {
-                                playerPosition = playerPosition - diceRoll;
-                                Console.WriteLine("\nNoplay\nplayer position : {0}", playerPosition);
+                                if (player1Position > 100)
+                                {
+                                    player1Position = player1Position - diceRoll;
+                                    Console.WriteLine("\nNoplay\nplayer 1 position : {0}", player1Position);
+                                    currentPlayer= "player2";
+                                }
+                                else
+                                    Console.WriteLine("Ladder\nplayer 1 has won: {0}", player1Position);
                             }
                             else
-                                Console.WriteLine("Ladder\nplayer has won: {0}", playerPosition);
+                                Console.WriteLine("No play\nplayer 1 position: {0}", player1Position);
+                                currentPlayer = "player2";
                         }
                         else
-                        Console.WriteLine("No play\nplayer position: {0}", playerPosition);
+                        {
+                            if (player2Position >= 100)
+                            {
+                                if (player2Position > 100)
+                                {
+                                    player2Position = player2Position - diceRoll;
+                                    Console.WriteLine("\nNoplay\nplayer 2 position : {0}", player2Position);
+                                    currentPlayer="player1";
+                                }
+                                else
+                                    Console.WriteLine("Ladder\nplayer 2 has won: {0}", player2Position);
+                            }
+                            else
+                                Console.WriteLine("No play\nplayer 2 position: {0}", player2Position);
+                                currentPlayer="player1";
+                        }
                         break;
 
                     case 2:
-                        Console.WriteLine("\nLadder\nplayer position: {0}", playerPosition);
-                        int previousPosition=playerPosition;
-                        playerPosition += diceRoll;
-                        if (playerPosition >= 100)
+                        if (currentPlayer == "player1")
                         {
-                            if (playerPosition > 100)
+                            int previousPosition = player1Position;
+                            player1Position += diceRoll;
+                            if (player1Position >= 100)
                             {
-                                playerPosition = previousPosition;
-                                Console.WriteLine("\nNoplay\nplayer position : {0}", playerPosition);
+                                if (player1Position > 100)
+                                {
+                                    player1Position = previousPosition;
+                                    Console.WriteLine("\nNoplay\nplayer 1 position : {0}", player1Position);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Ladder\nplayer 1 has won: {0}", player1Position);
+                                    player1Position += player1Position;
+                                }
                             }
                             else
-                            {
-                                Console.WriteLine("Ladder\nplayer has won: {0}", playerPosition);
-                                playerPosition += playerPosition;
-                            }
+                                Console.WriteLine("\nLadder\nplayer 1 position: {0}", player1Position);
+                                currentPlayer = "player1";
                         }
                         else
-                            Console.WriteLine("\nLadder\nplayer position: {0}", playerPosition);
+                        {
+                            int previousPosition = player2Position;
+                            player2Position += diceRoll;
+                            if (player2Position >= 100)
+                            {
+                                if (player2Position > 100)
+                                {
+                                    player2Position = previousPosition;
+                                    Console.WriteLine("\nNoplay\nplayer 2 position : {0}", player2Position);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Ladder\nplayer 2 has won: {0}", player2Position);
+                                    player1Position += player1Position;
+                                }
+                            }
+                            else
+                                Console.WriteLine("\nLadder\nplayer 2 position: {0}", player2Position);
+                                currentPlayer="player2";
+                        }
                         break;
 
                     case 3:
-                        playerPosition -= diceRoll;
-                        if (playerPosition < 0)
-                            playerPosition = 0;
-                        Console.WriteLine("Snake\nplayer position : {0}", playerPosition);
+                        if (currentPlayer == "player1")
+                        {
+                            player1Position -= diceRoll;
+                            if (player1Position < 0)
+                                player1Position = 0;
+                            Console.WriteLine("Snake\nplayer 1 position : {0}", player1Position);
+                            currentPlayer = "player2";
+                        }
+                        else
+                        {
+                            player2Position -= diceRoll;
+                            if (player2Position < 0)
+                                player2Position = 0;
+                            Console.WriteLine("Snake\nplayer 2 position : {0}", player2Position);
+                            currentPlayer = "player1";
+                        }
                         break;
                 }
+                       
+                }
 
-            }
             Console.ReadLine();
         }
     }
