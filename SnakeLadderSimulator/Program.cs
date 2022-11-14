@@ -14,7 +14,7 @@ namespace SnakeLadderSimulator
             Console.WriteLine("Welcome to Snake Ladder Single Player Game");
             Random random = new Random();
             int playerPosition = 0;
-
+            int diceCount = 0;//Usecase 6
             Console.WriteLine("initialized the player position to {0}", playerPosition);
             Console.WriteLine("Rolling the dice");
 
@@ -22,6 +22,7 @@ namespace SnakeLadderSimulator
             {
                
                 int diceRoll = random.Next(1, 7);
+                diceCount++;
                 Console.WriteLine("\nDice Number: {0}\n", diceRoll);
                 int option = random.Next(1, 4);
                 switch (option)
@@ -71,6 +72,7 @@ namespace SnakeLadderSimulator
                 }
 
             }
+            Console.WriteLine("Total number of times dice rolled : {0}",diceCount);//UseCase 6
             Console.ReadLine();
         }
     }
