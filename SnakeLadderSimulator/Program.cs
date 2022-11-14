@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,21 +20,46 @@ namespace SnakeLadderSimulator
 
             while (playerPosition <= 100)
             {
-
+               
                 int diceRoll = random.Next(1, 7);
                 Console.WriteLine("\nDice Number: {0}\n", diceRoll);
-
-
                 int option = random.Next(1, 4);
                 switch (option)
                 {
                     case 1:
+                        if (playerPosition >= 100)
+                        {
+                            if (playerPosition > 100)
+                            {
+                                playerPosition = playerPosition - diceRoll;
+                                Console.WriteLine("\nNoplay\nplayer position : {0}", playerPosition);
+                            }
+                            else
+                                Console.WriteLine("Ladder\nplayer has won: {0}", playerPosition);
+                        }
+                        else
                         Console.WriteLine("No play\nplayer position: {0}", playerPosition);
                         break;
 
                     case 2:
+                        Console.WriteLine("\nLadder\nplayer position: {0}", playerPosition);
+                        int previousPosition=playerPosition;
                         playerPosition += diceRoll;
-                        Console.WriteLine("Ladder\nplayer position : {0}", playerPosition);
+                        if (playerPosition >= 100)
+                        {
+                            if (playerPosition > 100)
+                            {
+                                playerPosition = previousPosition;
+                                Console.WriteLine("\nNoplay\nplayer position : {0}", playerPosition);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ladder\nplayer has won: {0}", playerPosition);
+                                playerPosition += playerPosition;
+                            }
+                        }
+                        else
+                            Console.WriteLine("\nLadder\nplayer position: {0}", playerPosition);
                         break;
 
                     case 3:
@@ -43,6 +69,7 @@ namespace SnakeLadderSimulator
                         Console.WriteLine("Snake\nplayer position : {0}", playerPosition);
                         break;
                 }
+
             }
             Console.ReadLine();
         }
