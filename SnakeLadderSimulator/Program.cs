@@ -16,15 +16,22 @@ namespace SnakeLadderSimulator
             
             int player1Position = 0;
             int player2Position = 0;
+            int diceCount1 = 0;
+            int diceCount2 = 0;
+            int totalDiceCount = 0;
             string currentPlayer = "player1";//initialized current player to player 1 in the beginning
             Console.WriteLine("initialized the player1 position to {0}", player1Position);
             Console.WriteLine("initialized the player2 position to {0}", player2Position);
-            Console.WriteLine("Rolling the dice for");
+            Console.WriteLine("Rolling the dice for current player : {0}",currentPlayer);
 
             while (player1Position <= 100 && player2Position<=100)
             {
-               
+                Console.WriteLine("\nRolling the dice for : {0}", currentPlayer);//print statement to see currently who is playing
                 int diceRoll = random.Next(1, 7);
+                if (currentPlayer == "player1")
+                    diceCount1++;
+                else
+                    diceCount2++;
                 Console.WriteLine("\nDice Number: {0}\n", diceRoll);
                 int option = random.Next(1, 4);
                 switch (option)
@@ -132,7 +139,10 @@ namespace SnakeLadderSimulator
                 }
                        
                 }
-
+            Console.WriteLine("Number of times dice thrown by player1 :{0}", diceCount1);
+            Console.WriteLine("Number of times dice thrown by player2 :{0}", diceCount2);
+             totalDiceCount = diceCount1 + diceCount2;
+            Console.WriteLine("Total number of times dice thrown by player1 and player 2 :{0}", totalDiceCount);
             Console.ReadLine();
         }
     }
