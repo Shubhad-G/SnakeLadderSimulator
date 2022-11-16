@@ -24,7 +24,7 @@ namespace SnakeLadderSimulator
             Console.WriteLine("initialized the player2 position to {0}", player2Position);
             Console.WriteLine("Rolling the dice for current player : {0}",currentPlayer);
 
-            while (player1Position <= 100 && player2Position<=100)
+            while (player1Position <= 100 && player2Position<=100)//condition to check until either one of the player win
             {
                 Console.WriteLine("\nRolling the dice for : {0}", currentPlayer);//print statement to see currently who is playing
                 int diceRoll = random.Next(1, 7);
