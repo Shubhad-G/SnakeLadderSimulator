@@ -37,7 +37,7 @@ namespace SnakeLadderSimulator
                 int option = random.Next(1, 4);
                 switch (option)
                 {
-                    case 1:
+                    case 1://no play option
                         if (currentPlayer == "player1")
                         {
                             if (player1Position >= 100)
@@ -74,7 +74,7 @@ namespace SnakeLadderSimulator
                         }
                         break;
 
-                    case 2:
+                    case 2://ladder option
                         if (currentPlayer == "player1")
                         {
                             int previousPosition = player1Position;
@@ -119,7 +119,7 @@ namespace SnakeLadderSimulator
                         }
                         break;
 
-                    case 3:
+                    case 3://snake option
                         if (currentPlayer == "player1")
                         {
                             player1Position -= diceRoll;
